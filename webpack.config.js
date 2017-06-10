@@ -1,7 +1,23 @@
+const path = require('path');
 module.exports = {
-  entry: "./assets/main.js",
+  entry: './app.js',
   output: {
-  	filename: "./assets/bundle.js"
+    filename: 'bundle.js'
   },
-  devtool: 'source-map',
+  resolve: {
+    extensions: ['.js', '.jsx', '*']
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
+      }
+    ]
+  },
+  devtool: 'source-map'
 };
